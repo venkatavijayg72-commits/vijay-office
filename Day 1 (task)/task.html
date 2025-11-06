@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Variable Assignment</title>
+</head>
+<body>
+  <h2>Display Variable Values Below:</h2>
+  <p id="stringValue"></p>
+  <p id="numberValue"></p>
+  <p id="booleanValue"></p>
+  <p id="objectValue"></p>
+  <p id="arrayValue"></p>
+
+  <script>
+    // Assign variables with different data types using let and const
+    let myString = "Hello, world!";
+    const myNumber = 42;
+    let myBoolean = true;
+    let myObject = { name: "Ram", age:30 };
+    let myArray = [1, 2, 3, 4, 5];
+
+    // Output their values to the console
+    console.log("String value:", myString);
+    console.log("Number value:", myNumber);
+    console.log("Boolean value:", myBoolean);
+    console.log("Object value:", myObject);
+    console.log("Array value:", myArray);
+
+    // Display their values in the HTML document
+    document.getElementById("stringValue").textContent = "String: " + myString;
+    document.getElementById("numberValue").textContent = "Number: " + myNumber;
+    document.getElementById("booleanValue").textContent = "Boolean: " + myBoolean;
+    document.getElementById("objectValue").textContent = "Object: " + JSON.stringify(myObject);
+    document.getElementById("arrayValue").textContent = "Array: " + myArray.join(", ");
+  </script>
+</body>
+</html>
