@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Character Count</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+      background-color: #f0f4f8;
+      color: #333;
+    }
+    textarea {
+      width: 400px;
+      height: 150px;
+      padding: 10px;
+      font-size: 1.1em;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      resize: none;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 22px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 6px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #count {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: hsl(311, 70%, 41%);
+    }
+  </style>
+</head>
+<body>
+
+  <textarea id="textInput" placeholder="Type or paste your text here..."></textarea>
+  <button id="countBtn">Show the count</button>
+  <div id="count"></div>
+
+  <script>
+    const btn = document.getElementById('countBtn');
+    const textInput = document.getElementById('textInput');
+    const countDisplay = document.getElementById('count');
+
+    btn.addEventListener('click', () => {
+      const text = textInput.value;
+      const charCount = text.length;
+      countDisplay.textContent = `Character Count: ${charCount}`;
+    });
+  </script>
+
+</body>
+</html>

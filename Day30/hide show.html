@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Show / Hide Paragraph</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    button {
+      padding: 10px 22px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 6px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      margin-bottom: 20px;
+      transition: background-color 0.2s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    p {
+      max-width: 600px;
+      font-size: 1.2em;
+      line-height: 1.5;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 8px;
+      background-color: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: opacity 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="toggleBtn">Show Paragraph</button>
+  <p id="text" style="display: none;">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum veritatis architecto delectus provident ab ea deserunt quod natus quaerat reiciendis sint consequatur nihil, eius repudiandae, quia nesciunt nobis minima sit.
+  </p>
+
+  <script>
+    const btn = document.getElementById('toggleBtn');
+    const para = document.getElementById('text');
+
+    btn.addEventListener('click', () => {
+      if (para.style.display === 'none') {
+        para.style.display = 'block';
+        btn.textContent = 'Hide Paragraph';
+      } else {
+        para.style.display = 'none';
+        btn.textContent = 'Show Paragraph';
+      }
+    });
+  </script>
+
+</body>
+</html>
