@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Counter</title>
+  <style>
+    body{
+        background-color: aquamarine;
+        justify-items: center;
+        padding-top: 50px;
+    }
+    #counterValue {
+      font-size: 2em;
+      margin: 20px 0;
+    }
+    button {
+      background-color: rgb(236, 148, 241);  
+      font-size: 1.5em;
+      border-radius: 20px;
+      height: 70px;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Counter:</h2>
+  <div id="counterValue">0</div>
+  <div>
+  <button id="decreaseBtn">Decrease(-)</button>
+  <button id="increaseBtn">Increase(+)</button>
+  </div>
+
+  <script>
+    // Get references to DOM elements
+    const counterValue = document.getElementById('counterValue');
+    const increaseBtn = document.getElementById('increaseBtn');
+    const decreaseBtn = document.getElementById('decreaseBtn');
+
+    let count = 0; // initial counter value
+
+    increaseBtn.addEventListener('click', function() {
+      count++;
+      counterValue.textContent = count;
+    });
+
+    decreaseBtn.addEventListener('click', function() {
+      count--;
+      counterValue.textContent = count;
+    });
+  </script>
+</body>
+</html>

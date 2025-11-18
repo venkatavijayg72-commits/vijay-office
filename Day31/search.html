@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Search Filter Example</title>
+  <style>
+    body{
+        background-color: lightpink;
+        justify-items: center;
+    }
+    input {
+      background-color: rgb(185, 247, 247);  
+      width: 250px;
+      padding: 8px;
+      margin-bottom: 15px;
+      font-size: 1em;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 6px 0;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+  <h2>Search Filter</h2>
+  <div>
+  <input type="text" id="searchInput" placeholder="Type to filter items..." >
+  <ul id="itemList">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Cherry</li>
+    <li>Date</li>
+    <li>Fig</li>
+    <li>Grape</li>
+    <li>Mango</li>
+  </ul>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const itemList = document.getElementById('itemList');
+    const items = itemList.getElementsByTagName('li');
+
+    searchInput.addEventListener('input', function() {
+      const filter = searchInput.value.toLowerCase();
+      for (let i = 0; i < items.length; i++) {
+        const itemText = items[i].textContent.toLowerCase();
+        if (itemText.includes(filter)) {
+          items[i].style.display = '';
+        } else {
+          items[i].style.display = 'none';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
