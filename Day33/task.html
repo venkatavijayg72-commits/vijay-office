@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 33 tasks</title>
+    <style>
+      body{
+    background-color: wheat;  
+    text-align: center;
+     }
+
+#size{
+    position: absolute;
+    font-size: 20px;
+    color: blue;
+    padding-left: 630px;
+ }    
+
+.buttons{
+    margin-top: 140px;
+}    
+#increase{
+    background-color: lightgray;
+    color: black;
+    font-size: 16px;
+    padding: 15px 30px;
+    border-radius: 5px;
+}
+#decrease{
+    background-color: lightgray;
+    color: black;
+    font-size: 16px;
+    padding: 15px 30px;
+    border-radius: 5px;
+}     
+    </style>
+</head>
+<body>
+<h1>Increase and decrease the font Size:</h1><br><br>
+
+<p id="size">Font Size</p>
+
+<div class="buttons">
+<button id="increase"><strong>Increase + </strong></button>&nbsp;&nbsp;&nbsp;
+<button id="decrease"><strong>Decrease - </strong></button>
+</div>
+
+  <script>
+
+ //1.Increase and decrease the font Size,Take p element and 2 buttons.
+
+    let size = 20;
+    const text = document.getElementById("size");
+
+    document.getElementById("increase").addEventListener("click",function(){
+        size ++;
+     updateCounterDisplay();
+    });
+
+    document.getElementById("decrease").addEventListener("click",function(){
+        size--;
+        updateCounterDisplay();
+    });
+
+    function updateCounterDisplay() {
+                text.style.fontSize = size + "px";
+                document.getElementById("value").textContent = size;
+            }
+  </script>
+ </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live Search Filter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: aliceblue;
+    }
+    h2 {
+      text-align: center;  
+      margin-bottom: 40px;
+      font-size: 30px;
+    }
+    #search {
+      width: 250px;
+      padding: 8px;
+      margin-left: 520px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+
+    }
+  </style>
+</head>
+<body>
+  <h2>Live Search Filter</h2>
+
+  <input list="itemsList" id="search" placeholder="Search items...">
+
+  <datalist id="itemsList">
+    <option value="Apple">
+    <option value="Banana">
+    <option value="Orange">
+    <option value="Mango">
+    <option value="Grapes">
+    <option value="Pineapple">
+  </datalist>
+
+  <script>
+  //3.Live Search Filter – We will have input with list of items.
+
+    const searchInput = document.getElementById('search');
+    
+      searchInput.addEventListener('input', function() {
+      const filter = searchInput.value.toLowerCase();
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(filter) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
