@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Logout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: #f0f0f0;
+        }
+        .status { font-size: 24px; font-weight: bold; margin: 20px 0;
+         }
+        .warning { color: orange; background: #fff3cd; padding: 15px; border-radius: 8px;
+         }
+        .logout { color: red; background: #f8d7da; padding: 15px; border-radius: 8px;
+         }
+        button { padding: 10px 20px; font-size: 16px; margin: 10px; cursor: pointer;
+         }
+        .logged-in { color: green; font-weight: bold;
+         }
+    </style>
+</head>
+<body>
+    <h2>Login page</h2>
+    <div id="loginStatus">Click Login to start session</div>
+    <button id="loginBtn">Login</button>
+    <button id="logoutBtn" disabled>Logout</button>
+    <div id="sessionWarning" class="warning" style="display: none;">⚠️ Warning: You will be logged out in 5 seconds!</div>
+    <div id="logoutMsg" class="logout" style="display: none;">👋 Logged out automatically due to inactivity!</div>
+
+    <script>
+        let sessionTimeoutId;
+        let warningTimeoutId;
+        let isLoggedIn = false;
+
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            if (!isLoggedIn) {
+                isLoggedIn = true;
+                document.getElementById('loginStatus').textContent = '✅ Logged in - Session active (30sec timeout)';
+                document.getElementById('loginStatus').className = 'status logged-in';
+                document.getElementById('loginBtn').disabled = true;
+                document.getElementById('logoutBtn').disabled = false;
+                
+                sessionTimeoutId = setTimeout(() => {
+                    logoutUser();
+                }, 30000);
+
+                warningTimeoutId = setTimeout(() => {
+                    document.getElementById('sessionWarning').style.display = 'block';
+                }, 25000);
+            }
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            logoutUser();
+        });
+
+        function logoutUser() {
+            isLoggedIn = false;
+            clearTimeout(sessionTimeoutId);
+            clearTimeout(warningTimeoutId);
+            document.getElementById('loginStatus').textContent = '❌ Logged out';
+            document.getElementById('loginStatus').className = 'status';
+            document.getElementById('loginBtn').disabled = false;
+            document.getElementById('logoutBtn').disabled = true;
+            document.getElementById('sessionWarning').style.display = 'none';
+            document.getElementById('logoutMsg').style.display = 'block';
+            
+            setTimeout(() => {
+                document.getElementById('logoutMsg').style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
