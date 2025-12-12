@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>To-Do List</title>
+  <style>
+    body{
+        background-color: aqua;
+        padding-top: 100px;
+        justify-items: center;
+        
+    }
+
+    ul {
+      list-style-type:decimal;
+      padding: 0;
+    }
+    li {
+      margin: 10px;
+    }
+    button.delete {
+      margin-left: 12px;
+      color: red;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>To-Do List</h2>
+  <div>
+  <input type="text" id="taskInput" placeholder="Enter a new task">
+  <button id="addBtn">Add Task</button>
+  </div>
+
+  <ul id="taskList"></ul>
+
+  <script>
+  const addBtn = document.getElementById('addBtn');
+  const taskInput = document.getElementById('taskInput');
+  const taskList = document.getElementById('taskList');
+
+  // Add a new task when button clicked
+  addBtn.addEventListener('click', function() {
+    const taskText = taskInput.value.trim();   // <-- fixed here
+    if (taskText === '') {
+      alert('Please enter a task');
+      return;
+    }
+
+    // Create new list item
+    const li = document.createElement('li');
+    li.textContent = taskText;
+
+    // Create delete button for each task
+    const delBtn = document.createElement('button');
+    delBtn.textContent = 'Delete';
+    delBtn.classList.add('delete');
+
+    // Delete this task on click
+    delBtn.addEventListener('click', function() {
+      taskList.removeChild(li);
+    });
+
+    li.appendChild(delBtn);
+    taskList.appendChild(li);
+    taskInput.value = '';
+    taskInput.focus();
+  });
+
+  // Add task on Enter key
+  taskInput.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+      addBtn.click();
+    }
+  });
+</script>
+
+</body>
+</html>
