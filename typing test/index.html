@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Typing Test</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>2 Minute Typing Test</h1>
+
+    <div id="info">
+      <div>Time Left: <span id="time">120</span>s</div>
+      <div>WPM: <span id="wpm">0</span></div>
+      <div>Accuracy: <span id="accuracy">0</span>%</div>
+      <div>Mistakes: <span id="mistakes">0</span></div>
+    </div>
+
+    <div id="text-to-type"></div>
+
+    <textarea
+      id="input"
+      placeholder="Click Start and begin typing here..."
+      disabled
+    ></textarea>
+
+    <div class="buttons">
+      <button id="start-btn">Start Test</button>
+      <button id="restart-btn" disabled>Restart</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
