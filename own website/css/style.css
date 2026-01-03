@@ -1,0 +1,190 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #f5f5f5;
+}
+.home-header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px 10px;
+    background:#6A1B9A;
+    color:#FFFFFF;
+    height:80px;
+
+}
+.nav-links li{
+    position: relative;
+    margin: 0 15px;
+    display: inline-flex;
+   
+
+}
+.nav-links li a{
+    text-decoration: none;
+    color:#FFFFFF;
+    font-weight: bold;
+    font-size: 16px;
+    padding:10px 10px;
+    border-radius: 5px;
+   
+}
+.nav-links li a:hover{
+    background: #4A0072;
+}
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 60vh;
+  background-image:url(../images/imgi_1_jumbo_image.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+/* Content */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 20px;
+}
+
+.hero-small {
+  font-size: 42px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.hero-title {
+  font-size: 56px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.hero-text {
+  font-size: 18px;
+  color: #e6dcff;
+  margin-bottom: 35px;
+  line-height: 1.6;
+}
+
+/* Button */
+.hero-btn {
+  display: inline-block;
+  padding: 14px 36px;
+  background: #7b2cbf;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(123, 44, 191, 0.45);
+  transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+  background: #9d4edd;
+  transform: translateY(-2px);
+  
+}
+
+.courses-section {
+  background: #f7f4fb;
+  padding: 80px 20px 100px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #6a1b9a;
+  margin-bottom: 60px;
+}
+
+.courses-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+}
+
+.course-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 520px;
+  padding: 40px;
+  text-align: left;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.course-card:hover{
+ transform: translateY(-5px);
+  box-shadow: 0 10px 25px  rgba(0, 0, 0, 0.08);
+
+}
+
+.course-card h3 {
+  font-size: 26px;
+  color: #6a1b9a;
+  margin-bottom: 20px;
+}
+
+.course-card p {
+  font-size: 16px;
+  color: #333333;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+
+.course-btn {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #6a1b9a;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+.course-btn:hover {
+  background: #B366FF;
+  
+}
+
+.site-footer {
+  background: #6a1b9a;
+  color: #ffffff;
+  text-align: center;
+  padding: 30px 15px;
+}
+
+.site-footer p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
