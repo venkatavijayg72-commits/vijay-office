@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Interactive Web Project</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #fff;
+  color: #333;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #2c5aa0;
+}
+
+section {
+  padding: 20px 40px;
+  border-bottom: 1px solid #eee;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+.container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.left, .right {
+  flex: 1;
+  min-width: 300px;
+}
+
+.map-box iframe {
+  width: 100%;
+  height: 280px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 8px 15px;
+  background: #2c5aa0;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #1f3f75;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+.note {
+  background: #fff3cd;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ffeeba;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+}
+
+.success {
+  color: green;
+  font-size: 14px;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Interactive Web Project</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Dynamic</a>
+    <a href="#">Timer</a>
+    <a href="#">Contact Form</a>
+  </nav>
+</header>
+
+<!-- ABOUT + MAP -->
+<section>
+  <h2>About This Project</h2>
+  <div class="container">
+    <div class="left">
+      <p>This is a sample interactive web page built using HTML, CSS and JavaScript.</p>
+      <ul>
+        <li>DOM manipulation</li>
+        <li>Form validation</li>
+        <li>Event handling</li>
+        <li>Local storage</li>
+      </ul>
+    </div>
+
+    <div class="right map-box">
+      <iframe id="map2" src="https://www.google.com/maps?q=108/43+Vijaya+Lakshmi+Enclave+1st+Floor+H+No+2+PJR+Enclave+Rd+Gangaram+ICRISAT+Colony+Hyderabad+Telangana+500050&output=embed" allowfullscreen="" loading="lazy"> </iframe>
+      <button onclick="toggleMap('map1')">Toggle Map</button>
+    </div>
+  </div>
+</section>
+
+<!-- TODO + TIMER + CONTACT -->
+<section>
+  <div class="container">
+
+    <!-- LEFT COLUMN -->
+    <div class="left">
+      <h2>Interactive To-Do List</h2>
+      <input type="text" id="taskInput" placeholder="New Task...">
+      <button onclick="addTask()">Add</button>
+      <div id="taskList"></div>
+
+      <div class="note">Tasks are saved in your browser's local storage.</div>
+      <button onclick="clearTasks()">Clear All Tasks</button>
+
+      <hr>
+
+      <h2>Auto-Updating Timer</h2>
+      <p>Time elapsed: <strong id="timer">00:00:00</strong></p>
+      <button onclick="pauseTimer()">Pause Timer</button>
+      <button onclick="resetTimer()">Reset Timer</button>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="right">
+      <h2>Contact Form</h2>
+
+      <label>Name:</label>
+      <input id="name">
+      <div id="nameErr" class="error"></div>
+
+      <label>Email:</label>
+      <input id="email">
+      <div id="emailErr" class="error"></div>
+
+      <label>Password:</label>
+      <input type="password" id="password">
+      <div id="passErr" class="error"></div>
+
+      <label>Message:</label>
+      <textarea></textarea>
+
+      <button onclick="saveForm()">Submit</button>
+      <button onclick="clearForm()">Clear Data</button>
+
+      <div id="successMsg" class="success"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MAP SECTION -->
+<section>
+  <h2>Feat Sessions & Videos</h2>
+  <div class="map-box">
+    <iframe id="map2" src="https://www.google.com/maps?q=108/43+Vijaya+Lakshmi+Enclave+1st+Floor+H+No+2+PJR+Enclave+Rd+Gangaram+ICRISAT+Colony+Hyderabad+Telangana+500050&output=embed" allowfullscreen="" loading="lazy"> </iframe>
+    <button onclick="toggleMap('map2')">Toggle Map</button>
+  </div>
+</section>
+
+<footer>
+  © 2024 Interactive Web Project | user@example.com
+</footer>
+
+<script>
+function toggleMap(id) {
+  const map = document.getElementById(id);
+  map.style.display = map.style.display === "none" ? "block" : "none";
+}
+
+/* TODO */
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+function renderTasks() {
+  const list = document.getElementById("taskList");
+  list.innerHTML = "";
+  tasks.forEach((task, i) => {
+    list.innerHTML += `
+      <div class="todo-item">
+        <span>${task}</span>
+        <button onclick="removeTask(${i})">Remove</button>
+      </div>`;
+  });
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function addTask() {
+  const input = document.getElementById("taskInput");
+  if (input.value) {
+    tasks.push(input.value);
+    input.value = "";
+    renderTasks();
+  }
+}
+
+function removeTask(i) {
+  tasks.splice(i, 1);
+  renderTasks();
+}
+
+function clearTasks() {
+  tasks = [];
+  renderTasks();
+}
+renderTasks();
+
+/* TIMER */
+let seconds = 0, running = true;
+setInterval(() => {
+  if (running) {
+    seconds++;
+    document.getElementById("timer").innerText =
+      new Date(seconds * 1000).toISOString().substr(11, 8);
+  }
+}, 1000);
+
+function pauseTimer() { running = !running; }
+function resetTimer() { seconds = 0; }
+
+/* FORM */
+function saveForm() {
+  let valid = true;
+  document.querySelectorAll(".error").forEach(e => e.innerText = "");
+
+  if (!name.value) { nameErr.innerText = "Please enter your name."; valid = false; }
+  if (!email.value.includes("@")) { emailErr.innerText = "Invalid email."; valid = false; }
+  if (password.value.length < 6) { passErr.innerText = "Min 6 characters."; valid = false; }
+
+  if (valid) {
+    localStorage.setItem("userEmail", email.value);
+    successMsg.innerText = "Your information is saved in this browser!";
+  }
+}
+
+function clearForm() {
+  localStorage.clear();
+  successMsg.innerText = "";
+}
+</script>
+
+</body>
+</html>
